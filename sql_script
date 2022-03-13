@@ -1,0 +1,1221 @@
+        ###---QUERY---###
+
+##Find top 10 most used start stations for most popular 3 months, for members: aug_20, sep_20, jul_20
+
+SELECT 
+	"aug_20" AS month_year, 
+	"member" AS member_casual, 
+    start_station_name, 
+	COUNT(start_station_name) AS most_frequent, 
+	start_lat, 
+	start_lng
+FROM 
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member"
+GROUP BY start_station_name, start_lat, start_lng
+ORDER BY COUNT(start_station_name) DESC
+limit 10;
+
+##
+
+SELECT 
+	"sep_20" AS month_year, 
+	"member" AS member_casual, 
+    start_station_name, 
+	COUNT(start_station_name) AS most_frequent, 
+	start_lat, 
+	start_lng
+FROM 
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member"
+GROUP BY start_station_name, start_lat, start_lng
+ORDER BY COUNT(start_station_name) DESC
+limit 10;
+
+##
+
+SELECT 
+	"jul_20" AS month_year, 
+	"member" AS member_casual, 
+    start_station_name, 
+	COUNT(start_station_name) AS most_frequent, 
+	start_lat, 
+	start_lng
+FROM 
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member"
+GROUP BY start_station_name, start_lat, start_lng
+ORDER BY COUNT(start_station_name) DESC
+limit 10;
+
+
+##Find top 10 most used start stations for most popular 3 months, for casual: aug_20, jul_20, sep_20
+
+SELECT 
+	"aug_20" AS month_year, 
+	"casual" AS member_casual, 
+    start_station_name, 
+	COUNT(start_station_name) AS most_frequent, 
+	start_lat, 
+	start_lng
+FROM 
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual"
+GROUP BY start_station_name, start_lat, start_lng
+ORDER BY COUNT(start_station_name) DESC
+limit 10;
+
+##
+
+SELECT 
+	"jul_20" AS month_year, 
+	"casual" AS member_casual, 
+    start_station_name, 
+	COUNT(start_station_name) AS most_frequent, 
+	start_lat, 
+	start_lng
+FROM 
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual"
+GROUP BY start_station_name, start_lat, start_lng
+ORDER BY COUNT(start_station_name) DESC
+limit 10;
+
+##
+
+SELECT 
+	"sep_20" AS month_year, 
+	"casual" AS member_casual, 
+    start_station_name, 
+	COUNT(start_station_name) AS most_frequent, 
+	start_lat, 
+	start_lng
+FROM 
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual"
+GROUP BY start_station_name, start_lat, start_lng
+ORDER BY COUNT(start_station_name) DESC
+limit 10;
+
+
+              ###---QUERY---###
+
+## Amount of rides for each day of the week for MEMBER, grouped by month_year.
+
+##apr_20
+
+SELECT 
+"apr_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+	
+##may_20
+
+SELECT 
+"may_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+	
+##jun_20
+
+SELECT 
+"jun_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+	
+##jul_20
+
+SELECT 
+"jul_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+	
+##aug_20
+
+SELECT 
+"aug_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##sep_20
+
+SELECT 
+"sep_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##oct_20
+
+SELECT 
+"oct_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##nov_20
+
+SELECT 
+"nov_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##dec_20
+
+SELECT 
+"dec_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##jan_21
+
+SELECT 
+"jan_21" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##feb_21
+
+SELECT 
+"feb_21" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+
+##mar_21
+
+SELECT 
+"mar_21" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 1) AS  member_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 2) AS  member_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 3) AS  member_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 4) AS  member_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 5) AS  member_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 6) AS  member_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "member" AND day_of_week = 7) AS member_saturday_ride; 
+    
+    
+    
+            ###---QUERY---###
+
+## Amount of rides for each day of the week for CASUAL, grouped by month_year.
+
+##apr_20
+
+SELECT 
+"apr_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.apr_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+	
+##may_20
+
+SELECT 
+"may_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.may_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+	
+##jun_20
+
+SELECT 
+"jun_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jun_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+	
+##jul_20
+
+SELECT 
+"jul_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jul_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+	
+##aug_20
+
+SELECT 
+"aug_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.aug_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##sep_20
+
+SELECT 
+"sep_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.sep_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##oct_20
+
+SELECT 
+"oct_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.oct_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##nov_20
+
+SELECT 
+"nov_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.nov_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##dec_20
+
+SELECT 
+"dec_20" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.dec_20`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##jan_21
+
+SELECT 
+"jan_21" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.jan_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##feb_21
+
+SELECT 
+"feb_21" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.feb_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+##mar_21
+
+SELECT 
+"mar_21" AS month_year,
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 1) AS  casual_sunday_ride, 
+    
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 2) AS  casual_monday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 3) AS  casual_tuesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 4) AS  casual_wednesday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 5) AS  casual_thursday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 6) AS  casual_friday_ride,
+
+(SELECT COUNT (day_of_week) 
+FROM
+    `deductive-wares-341003.nk_google.mar_21`
+WHERE
+    member_casual = "casual" AND day_of_week = 7) AS casual_saturday_ride; 
+
+###---END OF SQL SCRIPT---###
